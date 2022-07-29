@@ -1,0 +1,61 @@
+.viewPage {
+  .calendarForm {
+    height: 500px;
+    width: 100%;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+
+.buttonGroup {
+  height: 100px;
+  width: 100%;
+  background-color:azure;
+  display: flex;
+  justify-content: space-between;
+  .btn {
+    height: 50px;
+    width: 40px;
+    background-color: red;
+    cursor: pointer;
+  }
+
+}
+
+    .days {
+      height: 100px;
+      width: 100%;
+      background-color: aquamarine;
+      display: flex;
+      .daysName {
+        width: 20%;
+        height: 90px;
+        border: 1px black solid;
+      }
+    }
+
+    .dates {
+      height: 100px;
+      width: 100%;
+      background-color: thistle;
+      display: flex;
+      .date {
+        width: 20%;
+        height: 90px;
+        border: 1px black solid;
+      }
+    }
+
+    .events {
+      height: 100px;
+      width: 100%;
+      background-color:silver;
+      display: flex;
+      .event{
+        width: 20%;
+        height: 90px;
+        border: 1px black solid;
+      }
+    }
+
+  }
+}

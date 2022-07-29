@@ -4,6 +4,7 @@ import './index.scss';
 import Main from './Main';
 import SchedulerView from "./SchedulerView";
 import reportWebVitals from './reportWebVitals';
+// import Second from "./Second";
 import {
     Routes,
     Route,
@@ -16,11 +17,11 @@ root.render(
       <BrowserRouter>
         <Routes>
 
+            {/*<Route path='/' element={<Second/>}/>*/}
             <Route path='/' element={<Main/>}/>
-            <Route path='/view' element={<SchedulerView/>}/>
+            <Route path='/view' element={<SchedulerView theday={new Date()}/>}/>
         </Routes>
       </BrowserRouter>
-    <Main />
   </React.StrictMode>
 );
 
