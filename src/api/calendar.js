@@ -25,6 +25,8 @@ const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
 
 }
 
+// const createEvent =
+
 export default getCalendar
 
 

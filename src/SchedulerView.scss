@@ -58,4 +58,16 @@
     }
 
   }
+  .bottomSide {
+    height: 100px;
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .btn {
+      height: 50px;
+      width: 100px;
+    }
+  }
 }
