@@ -28,7 +28,7 @@
   padding: 16px;
   background-color: #f1f1f1;
   font-weight: 700;
-  height: 70px;
+  height: 20px;
 }
 .modal > section > header button {
   position: absolute;
@@ -45,6 +45,19 @@
 .modal > section > main {
   height: 200px;
   padding: 10px;
+  form {
+    height: 400px;
+    input, textarea {
+      height: 20px;
+    }
+    button {
+      margin-top: 10px;
+      height: 30px;
+      width: 100px;
+      background-color: thistle;
+      border-radius: 5px;
+    }
+  }
   .plan {
     height: 30px;
     background-color: azure;

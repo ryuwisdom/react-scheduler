@@ -1,11 +1,14 @@
 import axios from 'axios';
+const calId = 'c_uifli5n6o7avp8390627v8rh08@group.calendar.google.com'
 
-const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
+export const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
     const url = window.location.href
     const paramsString = new URLSearchParams(url)
     const token = paramsString.get('access_token')
+    localStorage.setItem('token', token)
 
-    axios.get('https://www.googleapis.com/calendar/v3/calendars/c_uifli5n6o7avp8390627v8rh08@group.calendar.google.com/events', {
+
+    axios.get(`https://www.googleapis.com/calendar/v3/calendars/${calId}/events`, {
         headers : {
             Authorization : 'Bearer ' + token
         },
@@ -25,37 +28,36 @@ const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
 
 }
 
-// const createEvent =
+export const handleSubmit = (e, summary, description, startDateTime, endDateTime,setModalOpen1, reloadCalendar ) => {
+    e.preventDefault()
+    console.log(summary, description, startDateTime, endDateTime )
 
-export default getCalendar
+    let token = localStorage.getItem('token')
 
+    axios.post(
+        `https://www.googleapis.com/calendar/v3/calendars/${calId}/events`,
+        {
+            'start': {
+                'dateTime': startDateTime + ":00+09:00",
+                'timeZone': 'Asia/Seoul'
+            },
+            'end': {
+                'dateTime': endDateTime + ":00+09:00",
+                'timeZone': 'Asia/Seoul'
+            },
+            "description" : description,
+            "summary":summary
+        },
+        {
+            headers: { Authorization: 'Bearer ' + token }
+        }).then(res=> {
+        console.log(res)
+        reloadCalendar()
+        setModalOpen1(false)
+        alert('일정이 추가되었습니다.')
 
-// export class GoogleCalendarApi {
-//
-//     constructor(token) {
-//         this.token = t
-//     }
-//
-//     getCalendar = (token)=> {
-//
-//         const url = window.location.href
-//         const paramsString = new URLSearchParams(url)
-//         const token = paramsString.get('access_token')
-//         console.log(paramsString.get('access_token'))
-//         console.log(paramsString.get('code'))
-//         axios.get('https://www.googleapis.com/calendar/v3/calendars/c_uifli5n6o7avp8390627v8rh08@group.calendar.google.com', {
-//             headers : {
-//                 Authorization : 'Bearer ' + token
-//             }
-//         })
-//             .then((res)=> {
-//                 console.log(res.data)
-//             })
-//             .catch((err)=> {
-//                 console.log(err)
-//             })
-//
-//     }
-//
-// }
+    })
+        .catch(err=> console.log(err))
+}
+
 

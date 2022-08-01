@@ -35,7 +35,7 @@ const Main = () => {
 
   return (
     <div className="Main">
-        <input className='loginBtn' type='button'  value='login' onClick={()=> {
+        <input className='loginBtn' type='button'  value='login with google' onClick={()=> {
             oauthSignIn()
         }}/>
     </div>

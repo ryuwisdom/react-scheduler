@@ -1,8 +1,7 @@
 .viewPage {
   .calendarForm {
-    height: 500px;
+    height: 400px;
     width: 100%;
-    background-color: aliceblue;
     display: flex;
     flex-direction: column;
 
@@ -12,17 +11,21 @@
   background-color:azure;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   .btn {
     height: 50px;
     width: 40px;
-    background-color: red;
     cursor: pointer;
+  }
+  .month {
+    font-size: 30px;
+
   }
 
 }
 
     .days {
-      height: 100px;
+      height: 50px;
       width: 100%;
       background-color: aquamarine;
       display: flex;
@@ -34,7 +37,7 @@
     }
 
     .dates {
-      height: 100px;
+      height: 50px;
       width: 100%;
       background-color: thistle;
       display: flex;
