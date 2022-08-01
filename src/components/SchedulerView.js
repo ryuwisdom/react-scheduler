@@ -36,8 +36,7 @@ const SchedulerView = (theday) => {
         getCalendar(daysOfCurrentWeek[0], daysOfCurrentWeek[6], setPlanOfThisWeek)
     }
 
-    useEffect(()=> { getCalendar(daysOfCurrentWeek[0], daysOfCurrentWeek[6], setPlanOfThisWeek)
-    }, [nowDay])
+    useEffect(()=> reloadCalendar(), [nowDay])
 
 
     return (
@@ -94,7 +93,8 @@ const SchedulerView = (theday) => {
             <div className='bottomSide'>
                 <button className='btn' onClick={()=> setModalOpen1(true)}>일정추가</button>
                 <Modal open={modalOpen1} close={()=> setModalOpen1(false)} header="일정추가">
-                    {<form onSubmit={(e)=> handleSubmit(e, summary, description, startDateTime, endDateTime, setModalOpen1, reloadCalendar)}>
+                    {<form onSubmit={(e)=>
+                        handleSubmit(e, summary, description, location, startDateTime, endDateTime, setModalOpen1, reloadCalendar)}>
                         <label htmlFor='summary'>summary</label>
                         <br/>
                         <input type='text' id='summary'

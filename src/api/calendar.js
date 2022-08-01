@@ -28,7 +28,7 @@ export const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
 
 }
 
-export const handleSubmit = (e, summary, description, startDateTime, endDateTime,setModalOpen1, reloadCalendar ) => {
+export const handleSubmit = (e, summary, description, location,  startDateTime, endDateTime,setModalOpen1, reloadCalendar ) => {
     e.preventDefault()
     console.log(summary, description, startDateTime, endDateTime )
 
@@ -46,7 +46,8 @@ export const handleSubmit = (e, summary, description, startDateTime, endDateTime
                 'timeZone': 'Asia/Seoul'
             },
             "description" : description,
-            "summary":summary
+            "summary":summary,
+            "location": location,
         },
         {
             headers: { Authorization: 'Bearer ' + token }
