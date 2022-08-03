@@ -11,7 +11,7 @@ const oauthSignIn = () => {
     form.setAttribute('action', oauth2Endpoint);
 
     // Parameters to pass to OAuth 2.0 endpoint.
-    const params = {'client_id': '589147212334-ipoh0p2h1fjtssbso88ch90e36fkof5e.apps.googleusercontent.com',
+    const params = {'client_id': 'YOUR_CLIENT_ID',
         'redirect_uri': 'http://localhost:3000/view',
         'response_type': 'token',
         'scope': 'https://www.googleapis.com/auth/calendar',

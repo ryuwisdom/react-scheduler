@@ -1,5 +1,5 @@
 import axios from 'axios';
-const calId = 'c_uifli5n6o7avp8390627v8rh08@group.calendar.google.com'
+const calId = 'dv1d605329spbqhmii4ms0dgqg@group.calendar.google.com'
 
 export const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
     const url = window.location.href
@@ -30,7 +30,6 @@ export const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
 
 export const handleSubmit = (e, summary, description, location,  startDateTime, endDateTime,setModalOpen1, reloadCalendar ) => {
     e.preventDefault()
-    console.log(summary, description, startDateTime, endDateTime )
 
     let token = localStorage.getItem('token')
 

@@ -3,7 +3,7 @@ import moment from 'moment'
 import './SchedulerView.scss'
 import Modal from "./Modal";
 import {getCalendar, handleSubmit} from '../api/calendar'
-import daysOfWeek from '../utils/dateUtil'
+import daysOfWeek from '../utils/date_util'
 
 const SchedulerView = (theday) => {
     const [nowDay, setNowDay] = useState(theday);
@@ -15,21 +15,19 @@ const SchedulerView = (theday) => {
     const [startDateTime, setStartDateTime] =useState('')
     const [endDateTime, setEndDateTime] =useState('')
 
-    const [modalOpen, setModalOpen] = useState(false)
-    const [modalOpen1, setModalOpen1] = useState(false)
+    const [eventAddModalOpen, setEventAddModalOpen] = useState(false)
+    const [eventViewModalOpen, setEventViewModalOpen] = useState(false)
 
     const moveLastWeek = () => {
        const last = moment(nowDay).add(-7, 'days');
         setNowDay(last)
         setDaysOfCurrentWeek(daysOfWeek(nowDay))
-        console.log('go last week')
     }
 
     const moveNextWeek = () => {
         const last = moment(nowDay).add(7, 'days');
         setNowDay(last)
         setDaysOfCurrentWeek(daysOfWeek(nowDay))
-        console.log('go next week')
     }
 
     const reloadCalendar = () => {
@@ -91,8 +89,8 @@ const SchedulerView = (theday) => {
             </div>
 
             <div className='bottomSide'>
-                <button className='btn' onClick={()=> setModalOpen1(true)}>일정추가</button>
-                <Modal open={modalOpen1} close={()=> setModalOpen1(false)} header="일정추가">
+                <button className='btn' onClick={()=> setEventAddModalOpen(true)}>일정추가</button>
+                <Modal open={eventAddModalOpen} close={()=> setEventAddModalOpen(false)} header="일정추가">
                     {<form onSubmit={(e)=>
                         handleSubmit(e, summary, description, location, startDateTime, endDateTime, setModalOpen1, reloadCalendar)}>
                         <label htmlFor='summary'>summary</label>
@@ -101,7 +99,6 @@ const SchedulerView = (theday) => {
                                value={summary}
                                onChange={e=>setSummary(e.target.value)}/>
                         <br/>
-
                         <label htmlFor='description'>description</label>
                         <br/>
                         <textarea
@@ -110,7 +107,6 @@ const SchedulerView = (theday) => {
                                onChange={e=>setDescription(e.target.value)}/>
                         <br/>
                         <br/>
-
                         <label htmlFor='location'>location</label>
                         <br/>
                         <input type='text' id='location'
@@ -118,31 +114,27 @@ const SchedulerView = (theday) => {
                                onChange={e=>setLocation(e.target.value)}/>
                         <br/>
                         <br/>
-
-                        <label htmlFor='startDateTime'>start Date Time</label>
-
+                        <label htmlFor='startDateTime'>Start Date Time</label>
                         <br/>
                         <input type='datetime-local' id='startDateTime'
                                value={startDateTime}
                                onChange={e=>setStartDateTime(e.target.value)}/>
                         <br/>
                         <br/>
-                        <label htmlFor='endDateTime'>end Date Time</label>
-
+                        <label htmlFor='endDateTime'>End Date Time</label>
                         <br/>
                         <input type='datetime-local' id='endDateTime'
                                value={endDateTime}
                                onChange={e=>setEndDateTime(e.target.value)}/>
                         <br/>
                         <br/>
-                        <button type='submit'>create event</button>
-
+                        <button type='submit'>Create Event</button>
                     </form>
                        }
                 </Modal>
 
-                <button className='btn' onClick={() => setModalOpen(true)}>일정확인</button>
-                <Modal open={modalOpen} close={()=> setModalOpen(false)} header="이번주 일정 확인">
+                <button className='btn' onClick={() => setEventViewModalOpen(true)}>일정확인</button>
+                <Modal open={eventViewModalOpen} close={()=> setEventViewModalOpen(false)} header="이번주 일정 확인">
                     {
                         planOfThisWeek.map((plan, idx)=> {
                             return <li className='plan' key={idx}>{plan.summary}</li>
