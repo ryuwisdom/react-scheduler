@@ -44,11 +44,11 @@ const SchedulerView = (theday) => {
                 <div className='buttonGroup'>
                     <div className='btn' onClick={()=> {
                         moveLastWeek()
-                    }}>prev</div>
+                    }}>◀️</div>
                     <div className='btn month' >{daysOfCurrentWeek[0].format('MM')}</div>
                     <div className='btn' onClick={()=> {
                         moveNextWeek()
-                    }}>next</div>
+                    }}>▶️</div>
                 </div>
                 <div className='days'>
                     <div className='daysName'>일</div>
@@ -78,8 +78,9 @@ const SchedulerView = (theday) => {
                             const dateTime = date.format("YYYY-MM-DD");
                             const startTime = moment(plan.start.dateTime).format("YYYY-MM-DD")
                             const endTime = moment(plan.end.dateTime).format("YYYY-MM-DD")
+                            const fromTime = moment(plan.start.dateTime).format("hh:mm a")
                                 if(dateTime >= startTime && dateTime <= endTime){
-                                    emptyEvent += plan.summary + "\n"
+                                    emptyEvent += '[' + fromTime +'] ' + plan.summary + '\n'
                                 }
                         })
                         return <div className='event' key={idx}>{emptyEvent}</div>
@@ -92,7 +93,7 @@ const SchedulerView = (theday) => {
                 <button className='btn' onClick={()=> setEventAddModalOpen(true)}>일정추가</button>
                 <Modal open={eventAddModalOpen} close={()=> setEventAddModalOpen(false)} header="일정추가">
                     {<form onSubmit={(e)=>
-                        handleSubmit(e, summary, description, location, startDateTime, endDateTime, setModalOpen1, reloadCalendar)}>
+                        handleSubmit(e, summary, description, location, startDateTime, endDateTime, setEventAddModalOpen, reloadCalendar)}>
                         <label htmlFor='summary'>summary</label>
                         <br/>
                         <input type='text' id='summary'
@@ -104,8 +105,8 @@ const SchedulerView = (theday) => {
                         <textarea
                                id='description'
                                value={description}
-                               onChange={e=>setDescription(e.target.value)}/>
-                        <br/>
+                               onChange={e=>setDescription(e.target.value)}
+                        />
                         <br/>
                         <label htmlFor='location'>location</label>
                         <br/>
@@ -137,7 +138,8 @@ const SchedulerView = (theday) => {
                 <Modal open={eventViewModalOpen} close={()=> setEventViewModalOpen(false)} header="이번주 일정 확인">
                     {
                         planOfThisWeek.map((plan, idx)=> {
-                            return <li className='plan' key={idx}>{plan.summary}</li>
+                            const fromTime = moment(plan.start.dateTime).format("hh:mm a")
+                            return <li className='plan' key={idx}>{'[' + fromTime +'] ' + plan.summary }</li>
                         })
                     }
                 </Modal>

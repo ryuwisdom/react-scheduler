@@ -14,7 +14,7 @@
   border: 0;
 }
 .modal > section {
-  height: 450px;
+  height: 400px;
   width: 90%;
   max-width: 450px;
   margin: 0 auto;
@@ -32,14 +32,13 @@
 }
 .modal > section > header button {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   height: 30px;
   width: 30px;
-  font-size: 21px;
-  font-weight: 700;
+  font-size: 30px;
   text-align: center;
-  color: #999;
+  color: mediumpurple;
   cursor: pointer;
 }
 .modal > section > main {
@@ -54,13 +53,11 @@
       margin-top: 10px;
       height: 30px;
       width: 100px;
-      background-color: thistle;
       border-radius: 5px;
     }
   }
   .plan {
     height: 30px;
-    background-color: azure;
   }
 }
 .modal > section > footer {
@@ -75,7 +72,8 @@
   padding: 10px;
   height: 40px;
   display: flex;
-  background-color: #6c757d;
+  background-color: mediumpurple;
+  color: floralwhite;
   border-radius: 5px;
   font-size: 13px;
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-const calId = 'dv1d605329spbqhmii4ms0dgqg@group.calendar.google.com'
+const calId = 'YOUR_CALENDAR_ID'
 
 export const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
     const url = window.location.href
@@ -28,7 +28,7 @@ export const getCalendar = (minDate, maxDate, setPlanOfThisWeek)=> {
 
 }
 
-export const handleSubmit = (e, summary, description, location,  startDateTime, endDateTime,setModalOpen1, reloadCalendar ) => {
+export const handleSubmit = (e, summary, description, location,  startDateTime, endDateTime,setEventAddModalOpen, reloadCalendar ) => {
     e.preventDefault()
 
     let token = localStorage.getItem('token')
@@ -53,7 +53,7 @@ export const handleSubmit = (e, summary, description, location,  startDateTime, 
         }).then(res=> {
         console.log(res)
         reloadCalendar()
-        setModalOpen1(false)
+        setEventAddModalOpen(false)
         alert('일정이 추가되었습니다.')
 
     })

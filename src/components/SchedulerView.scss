@@ -1,6 +1,8 @@
 .viewPage {
+  padding: 20px;
+
   .calendarForm {
-    height: 400px;
+    height: 320px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8,7 +10,6 @@
 .buttonGroup {
   height: 100px;
   width: 100%;
-  background-color:azure;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,44 +20,67 @@
   }
   .month {
     font-size: 30px;
+    font-family: "American Typewriter";
+    font-weight: 800;
+    color: mediumpurple;
 
   }
 
 }
 
     .days {
-      height: 50px;
+      height: 40px;
       width: 100%;
-      background-color: aquamarine;
       display: flex;
+      background-color: #AFB4FF;
       .daysName {
         width: 20%;
-        height: 90px;
-        border: 1px black solid;
+        height: 40px;
+        border-right: 1px mediumpurple solid;
+        border-bottom: 1px mediumpurple solid;
+        border-top: 1px mediumpurple solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:first-child {
+          border-left: 1px mediumpurple solid;
+        }
       }
     }
 
     .dates {
-      height: 50px;
+      height: 40px;
       width: 100%;
-      background-color: thistle;
       display: flex;
+      background: linear-gradient(to right, #d3cce3, #e9e4f0);
       .date {
         width: 20%;
-        height: 90px;
-        border: 1px black solid;
+        height: 40px;
+        border-right: 1px mediumpurple solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:first-child {
+          border-left: 1px mediumpurple solid;
+        }
       }
     }
 
     .events {
       height: 100px;
       width: 100%;
-      background-color:silver;
       display: flex;
       .event{
         width: 20%;
-        height: 90px;
-        border: 1px black solid;
+        height: 100px;
+        border-right: 1px mediumpurple solid;
+        border-top: 1px mediumpurple solid;
+        border-bottom: 1px mediumpurple solid;
+        padding: 15px;
+        white-space: pre-wrap;
+        &:first-child {
+          border-left: 1px mediumpurple solid;
+        }
       }
     }
 
@@ -64,7 +88,6 @@
   .bottomSide {
     height: 100px;
     width: 100%;
-    background-color: antiquewhite;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
